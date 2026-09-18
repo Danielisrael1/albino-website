@@ -1,0 +1,218 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   Base
+   --------------------------------------------------------------------------- */
+@layer base {
+  :root {
+    --edge: 1px solid rgb(22 17 15 / 0.1);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Driven by the A- / A+ reader control in the header */
+    font-size: 16px;
+    scroll-padding-top: 6.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-pink-500 text-white;
+  }
+
+  /* A visible, high-contrast focus ring matters a great deal for an
+     organisation whose members frequently live with low vision. */
+  :focus-visible {
+    outline: 3px solid theme('colors.sky.500');
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tightest;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Components
+   --------------------------------------------------------------------------- */
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-12;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2.5 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-clay;
+  }
+
+  /* Buttons: a colour sweep rises from the bottom on hover. */
+  .btn {
+    @apply relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-full
+           px-7 py-3.5 text-[0.94rem] font-semibold transition-transform duration-300 ease-spring
+           will-change-transform;
+  }
+  .btn:active {
+    transform: scale(0.97);
+  }
+  .btn > * {
+    @apply relative z-10;
+  }
+  .btn::after {
+    content: '';
+    @apply absolute inset-0 z-0 translate-y-full transition-transform duration-[450ms] ease-spring;
+  }
+  .btn:hover::after {
+    @apply translate-y-0;
+  }
+
+  .btn-pink {
+    @apply btn bg-pink-500 text-white shadow-pinkGlow;
+  }
+  .btn-pink::after {
+    @apply bg-ink;
+  }
+
+  .btn-ink {
+    @apply btn bg-ink text-paper;
+  }
+  .btn-ink::after {
+    @apply bg-pink-500;
+  }
+
+  .btn-outline {
+    @apply btn border border-sky-500/35 bg-transparent text-ink hover:text-white;
+  }
+  .btn-outline::after {
+    @apply bg-sky-500;
+  }
+
+  .btn-light {
+    @apply btn bg-paper text-ink;
+  }
+  .btn-light::after {
+    @apply bg-sky-500;
+  }
+
+  /* Nav links draw an underline from the left */
+  .nav-link {
+    @apply relative py-1 text-[0.95rem] font-medium text-ink/75 transition-colors duration-200 hover:text-ink;
+  }
+  .nav-link::after {
+    content: '';
+    @apply absolute -bottom-0.5 left-0 h-[2px] w-full origin-right scale-x-0 rounded-full
+           bg-pink-500 transition-transform duration-300 ease-spring;
+  }
+  .nav-link:hover::after,
+  .nav-link[data-active='true']::after {
+    @apply origin-left scale-x-100;
+  }
+  .nav-link[data-active='true'] {
+    @apply text-ink;
+  }
+
+  /* Text link with an underline that swaps colour on hover */
+  .ulink {
+    @apply relative inline-block font-medium text-ink underline decoration-pink-500/40
+           decoration-2 underline-offset-4 transition-colors duration-200
+           hover:decoration-pink-500 hover:text-pink-600;
+  }
+
+  .card {
+    @apply relative rounded-[1.75rem] border border-ink/10 bg-white transition-all duration-500 ease-spring;
+  }
+  .card-hover {
+    @apply hover:-translate-y-1.5 hover:border-transparent hover:shadow-lift;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Utilities
+   --------------------------------------------------------------------------- */
+@layer utilities {
+  /* Paper grain — keeps large flat areas from looking like a template */
+  .grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.16'/%3E%3C/svg%3E");
+  }
+
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  }
+
+  .text-stroke {
+    -webkit-text-stroke: 1.5px rgb(22 17 15 / 0.3);
+    color: transparent;
+  }
+  .text-stroke-light {
+    -webkit-text-stroke: 1.5px rgb(252 248 245 / 0.34);
+    color: transparent;
+  }
+
+  /* A restrained brand cast over scene photographs that lifts on hover.
+     People's portraits are always shown in full colour — being seen properly
+     is the entire point of "changing the image". */
+  .tint img {
+    filter: saturate(0.92) contrast(1.02);
+    transition: filter 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .tint::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, rgb(198 47 124 / 0.55), rgb(0 160 213 / 0.5));
+    mix-blend-mode: soft-light;
+    opacity: 0.9;
+    transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+  }
+  .tint:hover img,
+  .tint:focus-within img {
+    filter: saturate(1.04) contrast(1);
+  }
+  .tint:hover::after,
+  .tint:focus-within::after {
+    opacity: 0;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Respect the reader
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
