@@ -1,5 +1,5 @@
 import { Reveal, Stagger, StaggerItem } from './ui/Motion'
-import { ArrowUpRight, Spark } from './ui/Icons'
+import { ArrowUpRight } from './ui/Icons'
 import { individualPartners, partnerGroups } from '../data/site'
 
 export default function Partners() {
@@ -16,15 +16,15 @@ export default function Partners() {
             </Reveal>
             <Reveal delay={0.08}>
               <h2 className="mt-6 font-display text-[2.3rem] font-extrabold leading-[1.03] text-ink sm:text-[3rem] lg:text-[3.3rem]">
-                None of this
-                <span className="text-sky-500"> happens alone</span>.
+                Our <span className="text-sky-500">partners</span>.
               </h2>
             </Reveal>
           </div>
           <div className="lg:col-span-5">
             <Reveal delay={0.14}>
               <p className="text-[1.02rem] leading-[1.75] text-clay">
-                Foundations, clinics, government offices, churches and the disability movement.
+                Foundations, clinics, government offices, churches and the disability movement,
+                each covering a piece of the work we cannot cover alone.
               </p>
             </Reveal>
           </div>
@@ -34,7 +34,7 @@ export default function Partners() {
           {partnerGroups.map((group) => (
             <StaggerItem key={group.label}>
               <h3 className="flex items-center gap-3 text-[0.72rem] font-bold uppercase tracking-[0.2em] text-clay">
-                <Spark size={14} className="text-pink-500" />
+                <span className="h-px w-6 bg-pink-500" />
                 {group.label}
               </h3>
               <ul className="mt-5 space-y-px">
@@ -59,7 +59,7 @@ export default function Partners() {
       <div className="mt-20">
         <Reveal className="container-x">
           <h3 className="flex items-center gap-3 text-[0.72rem] font-bold uppercase tracking-[0.2em] text-clay">
-            <Spark size={14} className="text-sky-500" />
+            <span className="h-px w-6 bg-sky-500" />
             Individuals who stand with us
           </h3>
         </Reveal>

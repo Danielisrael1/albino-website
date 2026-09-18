@@ -76,8 +76,8 @@ export default function Contact() {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    const subject = `${form.topic} — from ${form.name || 'the website'}`
-    const body = `${form.message}\n\n—\nName: ${form.name}\nEmail: ${form.email}\nTopic: ${form.topic}\nSent from the WACWAU website`
+    const subject = `${form.topic}: ${form.name || 'website enquiry'}`
+    const body = `${form.message}\n\n---\nName: ${form.name}\nEmail: ${form.email}\nTopic: ${form.topic}\nSent from the WACWAU website`
     window.location.href = `mailto:${org.email}?subject=${encodeURIComponent(
       subject,
     )}&body=${encodeURIComponent(body)}`
@@ -113,7 +113,7 @@ export default function Contact() {
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mt-5 text-[1.02rem] leading-[1.7] text-clay">
-                Families looking for help, and organisations looking to partner — start here.
+                Families looking for help, and organisations looking to partner. Start here.
               </p>
             </Reveal>
 
@@ -158,7 +158,7 @@ export default function Contact() {
               >
                 <h3 className="font-display text-[1.4rem] font-bold text-ink">Send a message</h3>
                 <p className="mt-2 text-[0.92rem] text-clay">
-                  This opens your own email app with the message ready to send.
+                  This opens your email app with the message ready to send.
                 </p>
 
                 <div className="mt-8 grid gap-5 sm:grid-cols-2">
@@ -221,9 +221,15 @@ export default function Contact() {
                     <ArrowUpRight size={18} />
                   </button>
                   {sent && (
-                    <span className="inline-flex items-center gap-2 text-[0.9rem] font-medium text-sky-700">
-                      <Check size={17} />
-                      Your email app should now be open
+                    <span className="inline-flex items-start gap-2 text-[0.9rem] font-medium text-sky-700">
+                      <Check size={17} className="mt-0.5 shrink-0" />
+                      <span>
+                        Your email app should now be open. If nothing happened, write to{' '}
+                        <a href={`mailto:${org.email}`} className="underline underline-offset-2">
+                          {org.email}
+                        </a>
+                        .
+                      </span>
                     </span>
                   )}
                 </div>

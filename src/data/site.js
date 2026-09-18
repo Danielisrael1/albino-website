@@ -120,32 +120,38 @@ export const team = [
     tone: 'sky',
   },
   {
+    name: 'Nalugemwa Maria',
+    role: 'Administrator',
+    photo: '/images/nalugemwa-maria.jpg',
+    tone: 'pink',
+  },
+  {
     name: 'Buteme Rita',
     role: 'Secretary',
     phone: '+256 785 759 049',
     tel: '+256785759049',
-    tone: 'pink',
+    tone: 'sky',
   },
   {
     name: 'Lydia Musekweli',
     role: 'Publicity Secretary',
     phone: '+256 775 595 903',
     tel: '+256775595903',
-    tone: 'sky',
+    tone: 'pink',
   },
   {
     name: 'Ssemwogerere Denis',
     role: 'Programs Officer',
     phone: '+256 793 422 788',
     tel: '+256793422788',
-    tone: 'pink',
+    tone: 'sky',
   },
   {
     name: 'Makanga Muzamil',
     role: 'Youth Representative',
     phone: '+256 703 571 750',
     tel: '+256703571750',
-    tone: 'sky',
+    tone: 'pink',
   },
   {
     name: 'Mrs Kwesiga',
@@ -267,7 +273,7 @@ export const gallery = [
   {
     src: '/images/soap-making.jpg',
     alt: 'A woman with albinism pouring liquid soap into a bucket',
-    caption: 'Liquid soap making — a trade for those who missed formal school',
+    caption: 'Liquid soap making, a trade for those who missed formal school',
     span: 'lg:col-span-4',
   },
   {
@@ -285,7 +291,7 @@ export const gallery = [
   {
     src: '/images/outreach-distribution.jpg',
     alt: 'Women with albinism in wide-brimmed hats receiving supplies at an outreach',
-    caption: 'Outreach day — hats, sunscreen, supplies',
+    caption: 'Outreach day: hats, sunscreen and supplies',
     span: 'lg:col-span-5',
   },
   {
@@ -324,16 +330,73 @@ export const gallery = [
     caption: 'Members, together',
     span: 'lg:col-span-4',
   },
+  {
+    src: '/images/sun-protection-children.jpg',
+    alt: 'Two children with albinism sitting outdoors in wide-brimmed hats and sunglasses',
+    caption: 'Hats and sunglasses, worn every day',
+    span: 'lg:col-span-6',
+  },
+  {
+    src: '/images/children-playing.jpg',
+    alt: 'Children with albinism playing together in a paddling pool',
+    caption: 'Childhood, protected',
+    span: 'lg:col-span-6',
+  },
 ]
 
 export const faces = [
-  { src: '/images/face-doreen.jpg', alt: 'Portrait of Doreen' },
-  { src: '/images/face-sumayah.jpg', alt: 'Portrait of Sumayah, a mother carrying her baby with albinism' },
-  { src: '/images/face-gertrude.jpg', alt: 'Portrait of Gertrude' },
-  { src: '/images/face-teopista.jpg', alt: 'Portrait of Teopista' },
-  { src: '/images/face-rehema.jpg', alt: 'Portrait of Rehema' },
-  { src: '/images/face-hope.jpg', alt: 'Portrait of Hope' },
-  { src: '/images/face-alice.jpg', alt: 'Portrait of Alice' },
-  { src: '/images/face-jane.jpg', alt: 'Portrait of Jane' },
-  { src: '/images/face-scovia.jpg', alt: 'Portrait of Scovia holding her son, who has albinism' },
+  {
+    src: '/images/face-doreen.jpg',
+    alt: 'Portrait of Doreen',
+    w: 506,
+    h: 900,
+  },
+  {
+    src: '/images/face-sumayah.jpg',
+    alt: 'Portrait of Sumayah, a mother carrying her baby with albinism',
+    w: 506,
+    h: 900,
+  },
+  {
+    src: '/images/face-gertrude.jpg',
+    alt: 'Portrait of Gertrude',
+    w: 506,
+    h: 900,
+  },
+  {
+    src: '/images/face-teopista.jpg',
+    alt: 'Portrait of Teopista',
+    w: 506,
+    h: 900,
+  },
+  {
+    src: '/images/face-rehema.jpg',
+    alt: 'Portrait of Rehema',
+    w: 833,
+    h: 900,
+  },
+  {
+    src: '/images/face-hope.jpg',
+    alt: 'Portrait of Hope',
+    w: 943,
+    h: 900,
+  },
+  {
+    src: '/images/face-alice.jpg',
+    alt: 'Portrait of Alice',
+    w: 957,
+    h: 900,
+  },
+  {
+    src: '/images/face-jane.jpg',
+    alt: 'Portrait of Jane',
+    w: 772,
+    h: 900,
+  },
+  {
+    src: '/images/face-scovia.jpg',
+    alt: 'Portrait of Scovia holding her son, who has albinism',
+    w: 746,
+    h: 900,
+  },
 ]

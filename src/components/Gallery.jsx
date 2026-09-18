@@ -2,7 +2,6 @@ import { useRef } from 'react'
 import { useInView } from 'framer-motion'
 import { Reveal, Stagger, StaggerItem } from './ui/Motion'
 import { Marquee } from './ui/Decor'
-import { Spark } from './ui/Icons'
 import { faces, gallery } from '../data/site'
 
 function Frame({ item }) {
@@ -118,6 +117,8 @@ export default function Gallery() {
                     <img
                       src={face.src}
                       alt={face.alt}
+                      width={face.w}
+                      height={face.h}
                       loading={facesNear ? 'eager' : 'lazy'}
                       decoding="async"
                       className="h-full w-auto max-w-none object-cover"

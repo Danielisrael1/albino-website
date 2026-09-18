@@ -67,7 +67,7 @@ export default function Objectives() {
           <div className="lg:col-span-5">
             <Reveal delay={0.14}>
               <p className="text-[1.02rem] leading-[1.75] text-clay">
-                The list we measure ourselves against.
+                What WACWAU works on, from a bottle of sunscreen to a court case.
               </p>
             </Reveal>
           </div>
@@ -82,7 +82,7 @@ export default function Objectives() {
         <Reveal delay={0.1}>
           <div className="mt-14 flex flex-col items-start gap-6 rounded-[1.9rem] border border-ink/10 bg-ink p-8 text-paper sm:flex-row sm:items-center sm:justify-between sm:p-10">
             <p className="max-w-xl font-display text-[1.35rem] font-bold leading-snug sm:text-[1.6rem]">
-              Any one of these becomes possible the moment someone funds it.
+              Every objective on this list runs on funding.
             </p>
             <a href="#support" className="btn-light shrink-0">
               <span>Support our work</span>

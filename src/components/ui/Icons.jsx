@@ -165,9 +165,11 @@ export const Check = (p) => (
   </Svg>
 )
 
-export const Spark = (p) => (
-  <Svg {...p} fill="currentColor" stroke="none">
-    <path d="M12 2.4c.9 4.2 2.5 5.8 6.7 6.7-4.2.9-5.8 2.5-6.7 6.7-.9-4.2-2.5-5.8-6.7-6.7 4.2-.9 5.8-2.5 6.7-6.7zM18.4 15.2c.5 2.1 1.3 2.9 3.4 3.4-2.1.5-2.9 1.3-3.4 3.4-.5-2.1-1.3-2.9-3.4-3.4 2.1-.5 2.9-1.3 3.4-3.4z" />
+// Concentric rings, taken from the logo. Replaces the generic sparkle.
+export const RingDot = (p) => (
+  <Svg {...p}>
+    <circle cx="12" cy="12" r="7.6" />
+    <circle cx="12" cy="12" r="2.5" fill="currentColor" stroke="none" />
   </Svg>
 )
 

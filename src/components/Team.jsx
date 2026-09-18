@@ -1,7 +1,7 @@
 import { Reveal, Stagger, StaggerItem } from './ui/Motion'
 import { RingMark } from './ui/Decor'
-import { ArrowUpRight, Phone } from './ui/Icons'
-import { team } from '../data/site'
+import { ArrowUpRight, Mail, Phone } from './ui/Icons'
+import { org, team } from '../data/site'
 
 const initials = (name) =>
   name
@@ -27,13 +27,26 @@ function MemberCard({ member }) {
         }`}
       />
       <div className="relative">
-        <span
-          className={`grid h-16 w-16 place-items-center rounded-2xl font-display text-[1.4rem] font-extrabold transition-transform duration-500 ease-spring group-hover:scale-105 ${
-            pink ? 'bg-pink-500 text-white' : 'bg-sky-500 text-white'
-          }`}
-        >
-          {initials(member.name)}
-        </span>
+        {member.photo ? (
+          <span className="block h-16 w-16 overflow-hidden rounded-2xl bg-sand">
+            <img
+              src={member.photo}
+              alt={`${member.name}, ${member.role} of WACWAU`}
+              width="64"
+              height="64"
+              loading="lazy"
+              className="h-full w-full object-cover transition-transform duration-500 ease-spring group-hover:scale-105"
+            />
+          </span>
+        ) : (
+          <span
+            className={`grid h-16 w-16 place-items-center rounded-2xl font-display text-[1.4rem] font-extrabold text-white transition-transform duration-500 ease-spring group-hover:scale-105 ${
+              pink ? 'bg-pink-500' : 'bg-sky-500'
+            }`}
+          >
+            {initials(member.name)}
+          </span>
+        )}
         <h3 className="mt-6 font-display text-[1.18rem] font-bold leading-snug text-ink">
           {member.name}
         </h3>
@@ -44,21 +57,39 @@ function MemberCard({ member }) {
         >
           {member.role}
         </p>
-        <a
-          href={`tel:${member.tel}`}
-          className="mt-5 inline-flex items-center gap-2.5 text-[0.92rem] font-medium text-clay transition-colors duration-300 hover:text-ink"
-        >
-          <span
-            className={`grid h-8 w-8 place-items-center rounded-full transition-colors duration-300 ${
-              pink
-                ? 'bg-pink-50 text-pink-600 group-hover:bg-pink-500 group-hover:text-white'
-                : 'bg-sky-50 text-sky-600 group-hover:bg-sky-500 group-hover:text-white'
-            }`}
+        {member.tel ? (
+          <a
+            href={`tel:${member.tel}`}
+            className="mt-5 inline-flex items-center gap-2.5 text-[0.92rem] font-medium text-clay transition-colors duration-300 hover:text-ink"
           >
-            <Phone size={15} />
-          </span>
-          {member.phone}
-        </a>
+            <span
+              className={`grid h-8 w-8 place-items-center rounded-full transition-colors duration-300 ${
+                pink
+                  ? 'bg-pink-50 text-pink-600 group-hover:bg-pink-500 group-hover:text-white'
+                  : 'bg-sky-50 text-sky-600 group-hover:bg-sky-500 group-hover:text-white'
+              }`}
+            >
+              <Phone size={15} />
+            </span>
+            {member.phone}
+          </a>
+        ) : (
+          <a
+            href={`mailto:${org.email}`}
+            className="mt-5 inline-flex items-center gap-2.5 text-[0.92rem] font-medium text-clay transition-colors duration-300 hover:text-ink"
+          >
+            <span
+              className={`grid h-8 w-8 place-items-center rounded-full transition-colors duration-300 ${
+                pink
+                  ? 'bg-pink-50 text-pink-600 group-hover:bg-pink-500 group-hover:text-white'
+                  : 'bg-sky-50 text-sky-600 group-hover:bg-sky-500 group-hover:text-white'
+              }`}
+            >
+              <Mail size={15} />
+            </span>
+            Email the office
+          </a>
+        )}
       </div>
     </StaggerItem>
   )

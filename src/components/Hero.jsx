@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion'
-import { ArrowRight, Spark } from './ui/Icons'
-import { Glow, Marquee, RotatingBadge } from './ui/Decor'
+import { ArrowRight, RingDot } from './ui/Icons'
+import { Marquee, RingMark } from './ui/Decor'
 import { SketchUnderline } from './ui/Motion'
 import { org } from '../data/site'
 
@@ -43,9 +43,6 @@ export default function Hero() {
 
   return (
     <section id="hero" ref={ref} className="relative overflow-hidden pt-28 lg:pt-32">
-      <Glow className="left-[-12%] top-[6%] h-[420px] w-[420px]" color="pink" />
-      <Glow className="right-[-8%] top-[32%] h-[360px] w-[360px]" color="sky" />
-
       <div className="container-x relative">
         <div
           className="grid items-center gap-14 pb-16 lg:grid-cols-12 lg:gap-10 lg:pb-24"
@@ -100,8 +97,8 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
               className="mt-10 max-w-xl text-[1.06rem] leading-relaxed text-clay sm:text-[1.14rem]"
             >
-              We defend the rights of persons with albinism in Uganda — going the extra mile for
-              women and children.
+              We defend the rights of persons with albinism in Uganda, and go the extra mile for
+              the women and children among them.
             </motion.p>
 
             <motion.div
@@ -126,6 +123,12 @@ export default function Hero() {
             style={{ y: artY }}
             className="relative mx-auto w-full max-w-[460px] lg:col-span-5 lg:max-w-none xl:col-span-6"
           >
+            <RingMark
+              size={520}
+              spin={false}
+              variant="mono"
+              className="pointer-events-none absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2 text-ink/[0.06]"
+            />
             <motion.div style={{ x: px, y: py }} className="relative">
               {/* arch portrait */}
               <motion.figure
@@ -159,16 +162,6 @@ export default function Hero() {
                 />
               </motion.figure>
 
-              {/* rotating motto seal */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.9, delay: 0.62, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute -right-2 top-0 text-ink sm:-right-4 lg:-right-2"
-              >
-                <RotatingBadge size={126} solid />
-              </motion.div>
-
               {/* name plate */}
               <motion.figcaption
                 initial={{ opacity: 0, y: 18 }}
@@ -193,7 +186,7 @@ export default function Hero() {
         <Marquee
           items={ribbon}
           className="font-display text-[1.05rem] font-bold uppercase tracking-[0.14em] sm:text-[1.3rem]"
-          separator={<Spark size={15} className="mx-5 shrink-0 text-white/70 sm:mx-8" />}
+          separator={<RingDot size={13} className="mx-5 shrink-0 text-white/70 sm:mx-8" />}
         />
       </div>
     </section>

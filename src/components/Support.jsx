@@ -1,6 +1,6 @@
 import { Reveal, Stagger, StaggerItem } from './ui/Motion'
 import { DotField, RingMark } from './ui/Decor'
-import { Bank, Check, Copy, Mail, Phone, Spark } from './ui/Icons'
+import { Bank, Check, Copy, Mail, Phone } from './ui/Icons'
 import { useCopy } from '../hooks/useUi'
 import { org } from '../data/site'
 
@@ -73,8 +73,7 @@ export default function Support() {
             </Reveal>
             <Reveal delay={0.08}>
               <h2 className="mt-6 font-display text-[2.3rem] font-extrabold leading-[1.02] sm:text-[3rem] lg:text-[3.4rem]">
-                Put something
-                <span className="text-ink"> behind it</span>.
+                How to <span className="text-ink">give</span>.
               </h2>
             </Reveal>
           </div>
@@ -123,8 +122,7 @@ export default function Support() {
                 />
               </div>
 
-              <p className="mt-6 flex items-start gap-2.5 rounded-2xl bg-sand p-4 text-[0.86rem] leading-relaxed text-clay">
-                <Spark size={15} className="mt-0.5 shrink-0 text-pink-500" />
+              <p className="mt-6 border-l-2 border-pink-500 bg-sand py-3 pl-4 pr-4 text-[0.86rem] leading-relaxed text-clay">
                 To give in kind, call or write first, so it reaches the family that needs it most.
               </p>
 

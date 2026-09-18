@@ -17,7 +17,7 @@ function PledgeCard({ tone, label, text, index }) {
       />
       <div className="relative">
         <span className="font-display text-[0.7rem] font-bold uppercase tracking-[0.24em] text-white/85">
-          {String(index).padStart(2, '0')} — {label}
+          {String(index).padStart(2, '0')} · {label}
         </span>
         <p className="mt-6 font-display text-[1.3rem] font-bold leading-[1.3] tracking-tightest sm:text-[1.45rem]">
           {text}
@@ -61,8 +61,8 @@ export default function About() {
             <Reveal delay={0.1}>
               <p className="text-[1.08rem] leading-[1.75] text-clay sm:text-[1.16rem]">
                 WACWAU works for and with persons with albinism in Uganda, going the extra mile for
-                the women and children among them. Advocacy, education, health and sun protection —
-                carried out where people actually live.
+                the women and children among them. Advocacy, education, health and sun
+                protection, carried out where people actually live.
               </p>
             </Reveal>
 
