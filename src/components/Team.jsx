@@ -1,7 +1,7 @@
 import { Reveal, Stagger, StaggerItem } from './ui/Motion'
 import { RingMark } from './ui/Decor'
-import { ArrowUpRight, Mail, Phone } from './ui/Icons'
-import { org, team } from '../data/site'
+import { ArrowUpRight, Phone } from './ui/Icons'
+import { team } from '../data/site'
 
 const initials = (name) =>
   name
@@ -28,13 +28,14 @@ function MemberCard({ member }) {
       />
       <div className="relative">
         {member.photo ? (
-          <span className="block h-16 w-16 overflow-hidden rounded-2xl bg-sand">
+          <span className="block h-16 w-16 overflow-hidden rounded-2xl bg-sand ring-1 ring-ink/10">
             <img
               src={member.photo}
               alt={`${member.name}, ${member.role} of WACWAU`}
               width="64"
               height="64"
               loading="lazy"
+              style={{ objectPosition: member.focus || '50% 30%' }}
               className="h-full w-full object-cover transition-transform duration-500 ease-spring group-hover:scale-105"
             />
           </span>
@@ -73,23 +74,7 @@ function MemberCard({ member }) {
             </span>
             {member.phone}
           </a>
-        ) : (
-          <a
-            href={`mailto:${org.email}`}
-            className="mt-5 inline-flex items-center gap-2.5 text-[0.92rem] font-medium text-clay transition-colors duration-300 hover:text-ink"
-          >
-            <span
-              className={`grid h-8 w-8 place-items-center rounded-full transition-colors duration-300 ${
-                pink
-                  ? 'bg-pink-50 text-pink-600 group-hover:bg-pink-500 group-hover:text-white'
-                  : 'bg-sky-50 text-sky-600 group-hover:bg-sky-500 group-hover:text-white'
-              }`}
-            >
-              <Mail size={15} />
-            </span>
-            Email the office
-          </a>
-        )}
+        ) : null}
       </div>
     </StaggerItem>
   )
@@ -118,7 +103,7 @@ export default function Team() {
           <div className="lg:col-span-5">
             <Reveal delay={0.14}>
               <p className="text-[1.02rem] leading-[1.75] text-clay">
-                Every number here is a direct line.
+                Call the office and ask for the person whose work it is.
               </p>
             </Reveal>
           </div>

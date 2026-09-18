@@ -17,7 +17,7 @@ export const org = {
   },
   phones: [
     { display: '+256 772 358 815', tel: '+256772358815', who: 'Executive Director' },
-    { display: '+256 772 073 161', tel: '+256772073161', who: 'Project Manager' },
+    { display: '+256 701 358 815', tel: '+256701358815', who: 'Office line' },
   ],
   country: 'Uganda',
   bank: {
@@ -115,49 +115,38 @@ export const team = [
   {
     name: 'Bakuyita Diana',
     role: 'Project Manager',
-    phone: '+256 772 073 161',
-    tel: '+256772073161',
     tone: 'sky',
   },
   {
     name: 'Nalugemwa Maria',
     role: 'Administrator',
     photo: '/images/nalugemwa-maria.jpg',
+    focus: '50% 40%',
     tone: 'pink',
   },
   {
     name: 'Buteme Rita',
     role: 'Secretary',
-    phone: '+256 785 759 049',
-    tel: '+256785759049',
     tone: 'sky',
   },
   {
     name: 'Lydia Musekweli',
     role: 'Publicity Secretary',
-    phone: '+256 775 595 903',
-    tel: '+256775595903',
     tone: 'pink',
   },
   {
     name: 'Ssemwogerere Denis',
     role: 'Programs Officer',
-    phone: '+256 793 422 788',
-    tel: '+256793422788',
     tone: 'sky',
   },
   {
     name: 'Makanga Muzamil',
     role: 'Youth Representative',
-    phone: '+256 703 571 750',
-    tel: '+256703571750',
     tone: 'pink',
   },
   {
     name: 'Mrs Kwesiga',
     role: 'Parents’ Representative',
-    phone: '+256 782 563 347',
-    tel: '+256782563347',
     tone: 'pink',
   },
 ]
