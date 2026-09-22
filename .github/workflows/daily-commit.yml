@@ -1,0 +1,66 @@
+name: Daily activity log
+
+# Runs on GitHub's servers, so it does not depend on any machine being
+# switched on. Two runs a day, because scheduled workflows are sometimes
+# delayed or dropped under load; the job only ever writes one entry per date.
+on:
+  schedule:
+    - cron: '17 6 * * *'    # 09:17 in Kampala
+    - cron: '17 15 * * *'   # 18:17 in Kampala
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/daily-commit.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-activity-log
+  cancel-in-progress: false
+
+jobs:
+  log:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Record today and push
+        env:
+          TZ: Africa/Kampala
+        run: |
+          set -euo pipefail
+          FILE=activity-log.md
+          TODAY=$(date '+%Y-%m-%d')
+
+          if [ -f "$FILE" ] && grep -q "^| ${TODAY} " "$FILE"; then
+            echo "${TODAY} is already recorded; nothing to do."
+            exit 0
+          fi
+
+          if [ ! -f "$FILE" ]; then
+            {
+              printf '# Activity log\n\n'
+              printf 'A dated entry appended automatically once a day. It records that the\n'
+              printf 'project is being kept alive and nothing more.\n\n'
+              printf '| Date | Note |\n| --- | --- |\n'
+            } > "$FILE"
+          fi
+          printf '| %s | automated daily entry |\n' "$TODAY" >> "$FILE"
+
+          git config user.name  'Danielisrael1'
+          git config user.email 'danielisrael1@users.noreply.github.com'
+          git add "$FILE"
+          git commit -m "chore: activity log entry for ${TODAY}"
+
+          # in case anything landed on main while this run was in flight
+          for attempt in 1 2 3; do
+            if git push; then
+              echo "pushed on attempt ${attempt}"
+              exit 0
+            fi
+            echo "push rejected, rebasing and retrying"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+          done
+          echo "could not push after three attempts" >&2
+          exit 1
