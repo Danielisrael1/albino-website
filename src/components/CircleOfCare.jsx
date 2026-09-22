@@ -35,7 +35,6 @@ export default function CircleOfCare() {
           <div className="lg:col-span-6">
             <Reveal>
               <span className="eyebrow">
-                <span className="h-px w-8 bg-sky-500" />
                 Who we walk with
               </span>
             </Reveal>
@@ -87,11 +86,6 @@ export default function CircleOfCare() {
                   {group.title}
                 </h3>
                 <p className="mt-3 text-[0.98rem] leading-[1.7] text-clay">{group.body}</p>
-                <span
-                  className={`mt-5 block h-[3px] w-12 origin-left rounded-full transition-transform duration-500 ease-spring group-hover:scale-x-[2.6] ${
-                    group.tone === 'pink' ? 'bg-pink-500' : 'bg-sky-500'
-                  }`}
-                />
               </StaggerItem>
             ))}
           </Stagger>

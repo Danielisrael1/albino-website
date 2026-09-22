@@ -49,7 +49,6 @@ export default function Gallery() {
             <div className="lg:col-span-7">
               <Reveal>
                 <span className="eyebrow text-paper/70">
-                  <span className="h-px w-8 bg-sky-400" />
                   From the work
                 </span>
               </Reveal>
@@ -85,9 +84,7 @@ export default function Gallery() {
         <div className="container-x">
           <Reveal className="mx-auto max-w-2xl text-center">
             <span className="eyebrow justify-center">
-              <span className="h-px w-8 bg-sky-500" />
               Our people
-              <span className="h-px w-8 bg-sky-500" />
             </span>
             <h2 className="mt-6 font-display text-[2.3rem] font-extrabold leading-[1.04] text-ink sm:text-[3rem]">
               Faces, <span className="text-pink-500">not cases</span>.

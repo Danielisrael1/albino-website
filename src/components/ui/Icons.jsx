@@ -1,4 +1,4 @@
-// Hand-drawn icon set. Deliberately not a stock icon pack — the stroke weight
+// Hand-drawn icon set. Deliberately not a stock icon pack. The stroke weight
 // and the slightly loose geometry are meant to match the logo's warmth.
 
 const base = {

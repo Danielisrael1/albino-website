@@ -13,7 +13,6 @@ const initials = (name) =>
     .toUpperCase()
 
 function MemberCard({ member }) {
-  const pink = member.tone === 'pink'
   return (
     <StaggerItem
       as="article"
@@ -22,9 +21,7 @@ function MemberCard({ member }) {
       <RingMark
         size={128}
         variant="mono"
-        className={`pointer-events-none absolute -right-8 -top-8 transition-all duration-700 ease-spring group-hover:scale-110 ${
-          pink ? 'text-pink-100' : 'text-sky-100'
-        }`}
+        className="pointer-events-none absolute -right-8 -top-8 text-pink-100 transition-all duration-700 ease-spring group-hover:scale-110"
       />
       <div className="relative">
         {member.photo ? (
@@ -40,22 +37,14 @@ function MemberCard({ member }) {
             />
           </span>
         ) : (
-          <span
-            className={`grid h-16 w-16 place-items-center rounded-2xl font-display text-[1.4rem] font-extrabold text-white transition-transform duration-500 ease-spring group-hover:scale-105 ${
-              pink ? 'bg-pink-500' : 'bg-sky-500'
-            }`}
-          >
+          <span className="grid h-16 w-16 place-items-center rounded-2xl bg-pink-500 font-display text-[1.4rem] font-extrabold text-white transition-transform duration-500 ease-spring group-hover:scale-105">
             {initials(member.name)}
           </span>
         )}
         <h3 className="mt-6 font-display text-[1.18rem] font-bold leading-snug text-ink">
           {member.name}
         </h3>
-        <p
-          className={`mt-1.5 text-[0.72rem] font-bold uppercase tracking-[0.16em] ${
-            pink ? 'text-pink-500' : 'text-sky-600'
-          }`}
-        >
+        <p className="mt-1.5 text-[0.72rem] font-bold uppercase tracking-[0.16em] text-pink-500">
           {member.role}
         </p>
         {member.tel ? (
@@ -63,13 +52,7 @@ function MemberCard({ member }) {
             href={`tel:${member.tel}`}
             className="mt-5 inline-flex items-center gap-2.5 text-[0.92rem] font-medium text-clay transition-colors duration-300 hover:text-ink"
           >
-            <span
-              className={`grid h-8 w-8 place-items-center rounded-full transition-colors duration-300 ${
-                pink
-                  ? 'bg-pink-50 text-pink-600 group-hover:bg-pink-500 group-hover:text-white'
-                  : 'bg-sky-50 text-sky-600 group-hover:bg-sky-500 group-hover:text-white'
-              }`}
-            >
+            <span className="grid h-8 w-8 place-items-center rounded-full bg-pink-50 text-pink-600 transition-colors duration-300 group-hover:bg-pink-500 group-hover:text-white">
               <Phone size={15} />
             </span>
             {member.phone}
@@ -89,7 +72,6 @@ export default function Team() {
           <div className="lg:col-span-7">
             <Reveal>
               <span className="eyebrow">
-                <span className="h-px w-8 bg-sky-500" />
                 Leadership
               </span>
             </Reveal>
@@ -109,7 +91,7 @@ export default function Team() {
           </div>
         </div>
 
-        {/* featured — Executive Director */}
+        {/* featured: Executive Director */}
         <Reveal delay={0.06}>
           <article className="group mt-14 overflow-hidden rounded-[2rem] border border-ink/10 bg-white shadow-card transition-shadow duration-500 hover:shadow-lift">
             <div className="grid md:grid-cols-12">

@@ -12,16 +12,10 @@ const topics = [
   'Media and speaking',
 ]
 
-function ContactRow({ icon: Icon, label, value, href, external, tone = 'pink', tight = false }) {
-  const chip =
-    tone === 'sky'
-      ? 'bg-sky-50 text-sky-600 group-hover:bg-sky-500'
-      : 'bg-pink-50 text-pink-600 group-hover:bg-pink-500'
+function ContactRow({ icon: Icon, label, value, href, external, tight = false }) {
   const inner = (
     <>
-      <span
-        className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl transition-all duration-400 ease-spring group-hover:scale-105 group-hover:text-white ${chip}`}
-      >
+      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-pink-50 text-pink-600 transition-all duration-400 ease-spring group-hover:scale-105 group-hover:bg-pink-500 group-hover:text-white">
         <Icon size={19} />
       </span>
       <span className="min-w-0">
@@ -101,7 +95,6 @@ export default function Contact() {
           <div className="min-w-0 lg:col-span-5">
             <Reveal>
               <span className="eyebrow">
-                <span className="h-px w-8 bg-pink-500" />
                 Contact
               </span>
             </Reveal>
@@ -133,7 +126,6 @@ export default function Contact() {
                     label={phone.who}
                     value={phone.display}
                     href={`tel:${phone.tel}`}
-                    tone={i === 0 ? 'sky' : 'pink'}
                   />
                 ))}
                 <ContactRow
@@ -141,7 +133,6 @@ export default function Contact() {
                   label="Facebook"
                   value={org.facebook.label}
                   href={org.facebook.url}
-                  tone="sky"
                   external
                 />
                 <ContactRow icon={Location} label="Where we work" value="Uganda" />

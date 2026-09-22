@@ -36,7 +36,7 @@ function DetailRow({ label, value, copyId, copied, onCopy }) {
         onClick={() => onCopy(value, copyId)}
         className={`mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-full border transition-all duration-300 ${
           isCopied
-            ? 'border-sky-500 bg-sky-500 text-white'
+            ? 'border-pink-500 bg-pink-500 text-white'
             : 'border-ink/15 text-clay hover:border-pink-500 hover:bg-pink-500 hover:text-white'
         }`}
         aria-label={isCopied ? `${label} copied` : `Copy ${label.toLowerCase()}`}
@@ -67,7 +67,6 @@ export default function Support() {
           <div className="lg:col-span-7">
             <Reveal>
               <span className="eyebrow text-white/85">
-                <span className="h-px w-8 bg-white/60" />
                 Support our work
               </span>
             </Reveal>
@@ -153,7 +152,6 @@ export default function Support() {
                   {way.title}
                 </h3>
                 <p className="mt-2.5 text-[0.93rem] leading-[1.68] text-white/80">{way.body}</p>
-                <span className="mt-5 block h-[3px] w-10 origin-left rounded-full bg-white/40 transition-transform duration-500 ease-spring group-hover:scale-x-[2.4] group-hover:bg-white" />
               </StaggerItem>
             ))}
           </Stagger>

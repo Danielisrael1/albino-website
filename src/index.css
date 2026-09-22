@@ -141,7 +141,7 @@
    Utilities
    --------------------------------------------------------------------------- */
 @layer utilities {
-  /* Paper grain — keeps large flat areas from looking like a template */
+  /* Paper grain: keeps large flat areas from looking like a template */
   .grain::before {
     content: '';
     position: absolute;
@@ -167,7 +167,7 @@
   }
 
   /* A restrained brand cast over scene photographs that lifts on hover.
-     People's portraits are always shown in full colour — being seen properly
+     People's portraits are always shown in full colour, because being seen properly
      is the entire point of "changing the image". */
   .tint img {
     filter: saturate(0.92) contrast(1.02);

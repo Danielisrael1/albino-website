@@ -28,7 +28,7 @@ export const org = {
 }
 
 // -----------------------------------------------------------------------------
-// Objectives — WACWAU's own nine working objectives.
+// Objectives: WACWAU's own nine working objectives.
 // -----------------------------------------------------------------------------
 
 export const objectives = [

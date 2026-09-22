@@ -10,7 +10,6 @@ export default function Partners() {
           <div className="lg:col-span-7">
             <Reveal>
               <span className="eyebrow">
-                <span className="h-px w-8 bg-sky-500" />
                 Partners
               </span>
             </Reveal>
@@ -34,7 +33,6 @@ export default function Partners() {
           {partnerGroups.map((group) => (
             <StaggerItem key={group.label}>
               <h3 className="flex items-center gap-3 text-[0.72rem] font-bold uppercase tracking-[0.2em] text-clay">
-                <span className="h-px w-6 bg-pink-500" />
                 {group.label}
               </h3>
               <ul className="mt-5 space-y-px">
@@ -45,7 +43,6 @@ export default function Partners() {
                       <span className="font-display text-[1.05rem] font-semibold leading-snug text-ink transition-colors duration-300 group-hover:text-pink-600">
                         {item}
                       </span>
-                      <span className="ml-auto h-2 w-2 shrink-0 rounded-full bg-sky-200 transition-all duration-400 group-hover:scale-150 group-hover:bg-sky-500" />
                     </div>
                   </li>
                 ))}
@@ -59,7 +56,6 @@ export default function Partners() {
       <div className="mt-20">
         <Reveal className="container-x">
           <h3 className="flex items-center gap-3 text-[0.72rem] font-bold uppercase tracking-[0.2em] text-clay">
-            <span className="h-px w-6 bg-sky-500" />
             Individuals who stand with us
           </h3>
         </Reveal>

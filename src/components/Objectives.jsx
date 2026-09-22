@@ -22,11 +22,7 @@ function ObjectiveCard({ item, index }) {
 
       <div className="relative flex h-full flex-col">
         <div className="flex items-start justify-between">
-          <span
-            className={`grid h-14 w-14 shrink-0 place-items-center rounded-2xl transition-all duration-500 ease-spring group-hover:bg-white/15 group-hover:text-white ${
-              pink ? 'bg-pink-50 text-pink-600' : 'bg-sky-50 text-sky-600'
-            }`}
-          >
+          <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-pink-50 text-pink-600 transition-all duration-500 ease-spring group-hover:bg-white/15 group-hover:text-white">
             <Icon size={27} />
           </span>
           <span className="font-display text-[2.6rem] font-extrabold leading-none text-ink/10 transition-colors duration-500 group-hover:text-white/30">
@@ -54,7 +50,6 @@ export default function Objectives() {
           <div className="lg:col-span-7">
             <Reveal>
               <span className="eyebrow">
-                <span className="h-px w-8 bg-sky-500" />
                 What we do
               </span>
             </Reveal>

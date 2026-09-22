@@ -41,7 +41,7 @@ export default function Footer() {
               </a>
               <a
                 href={`mailto:${org.email}`}
-                className="grid h-11 w-11 place-items-center rounded-full border border-paper/20 text-paper transition-all duration-300 hover:border-sky-500 hover:bg-sky-500"
+                className="grid h-11 w-11 place-items-center rounded-full border border-paper/20 text-paper transition-all duration-300 hover:border-pink-500 hover:bg-pink-500"
                 aria-label="Email WACWAU"
               >
                 <Mail size={18} />
@@ -67,7 +67,6 @@ export default function Footer() {
                     href={`#${link.id}`}
                     className="group inline-flex items-center gap-2 text-[0.98rem] text-paper/75 transition-colors hover:text-pink-300"
                   >
-                    <span className="h-px w-0 bg-pink-400 transition-all duration-300 group-hover:w-4" />
                     {link.label}
                   </a>
                 </li>

@@ -57,10 +57,6 @@ export default function Hero() {
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               className="inline-flex items-center gap-2.5 rounded-full border border-ink/12 bg-white/70 px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-clay backdrop-blur"
             >
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pink-500 opacity-70" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-pink-500" />
-              </span>
               Women and Children with Albinism in {org.country}
             </motion.span>
 

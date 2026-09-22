@@ -35,7 +35,6 @@ export default function About() {
           <div className="lg:col-span-5">
             <Reveal>
               <span className="eyebrow">
-                <span className="h-px w-8 bg-sky-500" />
                 Who we are
               </span>
             </Reveal>

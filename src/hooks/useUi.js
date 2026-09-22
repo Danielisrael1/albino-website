@@ -60,7 +60,7 @@ export function useCopy(timeout = 1800) {
         setCopied(id ?? value)
         setTimeout(() => setCopied(null), timeout)
       } catch {
-        /* clipboard blocked — the value is still visible on screen */
+        /* clipboard blocked: the value is still visible on screen */
       }
     },
     [timeout],
