@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>WACWAU</title>
+    <script>
+      // GitHub Pages serves this file for unknown paths. Hand the path back to
+      // the single page app so /projects and /projects/:slug work on a refresh.
+      (function () {
+        var l = window.location
+        var base = '/albino-website'
+        var path = l.pathname.indexOf(base) === 0 ? l.pathname.slice(base.length) : l.pathname
+        l.replace(base + '/?redirect=' + encodeURIComponent(path + l.search + l.hash))
+      })()
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,9 +1,11 @@
+import { Link } from 'react-router-dom'
 import { ArrowDown, Facebook, Mail, Phone } from './ui/Icons'
 import { org } from '../data/site'
 
 const quickLinks = [
   { id: 'about', label: 'About' },
   { id: 'objectives', label: 'Our work' },
+  { to: '/projects', label: 'Projects' },
   { id: 'team', label: 'Team' },
   { id: 'partners', label: 'Partners' },
   { id: 'support', label: 'Support' },
@@ -62,13 +64,13 @@ export default function Footer() {
             </h3>
             <ul className="mt-5 space-y-3">
               {quickLinks.map((link) => (
-                <li key={link.id}>
-                  <a
-                    href={`#${link.id}`}
+                <li key={link.to || link.id}>
+                  <Link
+                    to={link.to || `/#${link.id}`}
                     className="group inline-flex items-center gap-2 text-[0.98rem] text-paper/75 transition-colors hover:text-pink-300"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -111,15 +113,15 @@ export default function Footer() {
           <p className="text-[0.84rem] text-paper/60">
             © {new Date().getFullYear()} {org.name} (WACWAU). All rights reserved.
           </p>
-          <a
-            href="#hero"
+          <Link
+            to="/"
             className="group inline-flex items-center gap-3 text-[0.78rem] font-semibold uppercase tracking-[0.18em] text-paper/70 transition-colors hover:text-paper"
           >
             Back to top
             <span className="grid h-10 w-10 place-items-center rounded-full border border-paper/20 transition-all duration-300 group-hover:border-pink-500 group-hover:bg-pink-500">
               <ArrowDown size={16} className="rotate-180" />
             </span>
-          </a>
+          </Link>
         </div>
       </div>
     </footer>

@@ -1,30 +1,23 @@
+import { Route, Routes } from 'react-router-dom'
 import Header from './components/Header'
-import Hero from './components/Hero'
-import About from './components/About'
-import CircleOfCare from './components/CircleOfCare'
-import Objectives from './components/Objectives'
-import Gallery from './components/Gallery'
-import Team from './components/Team'
-import Partners from './components/Partners'
-import Support from './components/Support'
-import Contact from './components/Contact'
 import Footer from './components/Footer'
+import ScrollToHash from './components/ScrollToHash'
+import Home from './pages/Home'
+import Projects from './pages/Projects'
+import ItemDetail from './pages/ItemDetail'
 
 export default function App() {
   return (
     <>
+      <ScrollToHash />
       <Header />
-      <main id="main">
-        <Hero />
-        <About />
-        <CircleOfCare />
-        <Objectives />
-        <Gallery />
-        <Team />
-        <Partners />
-        <Support />
-        <Contact />
-      </main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/:slug" element={<ItemDetail kind="project" />} />
+        <Route path="/fundraisers/:slug" element={<ItemDetail kind="fundraiser" />} />
+        <Route path="*" element={<Home />} />
+      </Routes>
       <Footer />
     </>
   )

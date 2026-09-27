@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion'
 import { ArrowRight, Close, Facebook, Mail, Menu, Phone } from './ui/Icons'
 import { useActiveSection, useScrolled, useScrollLock } from '../hooks/useUi'
@@ -7,16 +8,21 @@ import { org } from '../data/site'
 const links = [
   { id: 'about', label: 'About' },
   { id: 'objectives', label: 'Our work' },
+  { to: '/projects', label: 'Projects' },
   { id: 'team', label: 'Team' },
   { id: 'partners', label: 'Partners' },
   { id: 'support', label: 'Support' },
   { id: 'contact', label: 'Contact' },
 ]
 
+const sectionIds = links.filter((l) => l.id).map((l) => l.id)
+
 export default function Header() {
   const [open, setOpen] = useState(false)
   const scrolled = useScrolled(30)
-  const active = useActiveSection(links.map((l) => l.id))
+  const { pathname } = useLocation()
+  const onHome = pathname === '/'
+  const active = useActiveSection(sectionIds)
   const { scrollYProgress } = useScroll()
   const progress = useSpring(scrollYProgress, { stiffness: 130, damping: 28, mass: 0.25 })
   useScrollLock(open)
@@ -44,7 +50,7 @@ export default function Header() {
         }`}
       >
         <div className="container-x flex items-center justify-between gap-4">
-          <a href="#hero" className="group flex items-center gap-3" aria-label="WACWAU home">
+          <Link to="/" className="group flex items-center gap-3" aria-label="WACWAU home">
             <img
               src="/images/wacwau-logo.png"
               alt=""
@@ -62,27 +68,31 @@ export default function Header() {
                 Changing the image
               </span>
             </span>
-          </a>
+          </Link>
 
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
-            {links.map((link) => (
-              <a
-                key={link.id}
-                href={`#${link.id}`}
-                className="nav-link"
-                data-active={active === link.id}
-                aria-current={active === link.id ? 'true' : undefined}
-              >
-                {link.label}
-              </a>
-            ))}
+            {links.map((link) => {
+              const isPage = Boolean(link.to)
+              const isActive = isPage ? pathname.startsWith(link.to) : onHome && active === link.id
+              return (
+                <Link
+                  key={link.to || link.id}
+                  to={isPage ? link.to : `/#${link.id}`}
+                  className="nav-link"
+                  data-active={isActive}
+                  aria-current={isActive ? 'true' : undefined}
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
           </nav>
 
           <div className="flex items-center gap-3">
-            <a href="#support" className="btn-pink hidden !px-6 !py-3 text-[0.88rem] sm:inline-flex">
+            <Link to="/#support" className="btn-pink hidden !px-6 !py-3 text-[0.88rem] sm:inline-flex">
               <span>Support our work</span>
               <ArrowRight size={17} />
-            </a>
+            </Link>
             <button
               type="button"
               onClick={() => setOpen(true)}
@@ -123,24 +133,27 @@ export default function Header() {
 
               <nav className="mt-8 flex flex-1 flex-col justify-center gap-0.5" aria-label="Mobile">
                 {links.map((link, i) => (
-                  <motion.a
-                    key={link.id}
-                    href={`#${link.id}`}
-                    onClick={() => setOpen(false)}
+                  <motion.div
+                    key={link.to || link.id}
                     initial={{ opacity: 0, x: -24 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.12 + i * 0.06, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className="group flex items-baseline gap-4 border-b border-paper/10 py-3.5 font-display text-[1.7rem] font-bold tracking-tightest transition-colors hover:text-pink-300 sm:text-[2rem]"
                   >
-                    <span className="font-sans text-[0.7rem] font-semibold text-pink-400">
-                      0{i + 1}
-                    </span>
-                    {link.label}
-                    <ArrowRight
-                      size={22}
-                      className="ml-auto self-center opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100"
-                    />
-                  </motion.a>
+                    <Link
+                      to={link.to || `/#${link.id}`}
+                      onClick={() => setOpen(false)}
+                      className="group flex items-baseline gap-4 border-b border-paper/10 py-3.5 font-display text-[1.7rem] font-bold tracking-tightest transition-colors hover:text-pink-300 sm:text-[2rem]"
+                    >
+                      <span className="font-sans text-[0.7rem] font-semibold text-pink-400">
+                        0{i + 1}
+                      </span>
+                      {link.label}
+                      <ArrowRight
+                        size={22}
+                        className="ml-auto self-center opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100"
+                      />
+                    </Link>
+                  </motion.div>
                 ))}
               </nav>
 
@@ -161,10 +174,10 @@ export default function Header() {
                     <Facebook size={17} /> Facebook
                   </a>
                 </div>
-                <a href="#support" onClick={() => setOpen(false)} className="btn-light w-full">
+                <Link to="/#support" onClick={() => setOpen(false)} className="btn-light w-full">
                   <span>Support our work</span>
                   <ArrowRight size={18} />
-                </a>
+                </Link>
               </div>
             </div>
           </motion.div>
