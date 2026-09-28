@@ -62,8 +62,19 @@ export default function ItemDetail({ kind }) {
     )
   }
 
-  const pct = progressOf(item.raised_amount, item.goal_amount)
-  const meta = [item.location, prettyDate(item.happened_on)].filter(Boolean).join(' · ')
+  const isFundraiser = kind === 'fundraiser'
+  const raised = isFundraiser ? item.raised_amount : item.amount_raised
+  const target = isFundraiser ? item.goal_amount : item.budget
+  const pct = progressOf(raised, target)
+  const meta = [
+    item.location,
+    prettyDate(item.date_started),
+    Number(item.beneficiaries) > 0
+      ? `${Number(item.beneficiaries).toLocaleString('en-UG')} people reached`
+      : null,
+  ]
+    .filter(Boolean)
+    .join(' · ')
 
   return (
     <main id="main" className="pt-28 lg:pt-36">
@@ -89,13 +100,9 @@ export default function ItemDetail({ kind }) {
           </Reveal>
         )}
 
-        {item.summary && (
-          <Reveal delay={0.12}>
-            <p className="mt-6 max-w-2xl text-[1.1rem] leading-[1.7] text-clay">{item.summary}</p>
-          </Reveal>
-        )}
 
-        {kind === 'fundraiser' && pct != null && (
+
+        {pct != null && (
           <Reveal delay={0.16}>
             <div className="mt-9 max-w-xl rounded-[1.6rem] border border-ink/10 bg-white p-7">
               <div className="h-2.5 overflow-hidden rounded-full bg-sand">
@@ -103,15 +110,15 @@ export default function ItemDetail({ kind }) {
               </div>
               <p className="mt-4 text-[0.98rem] text-clay">
                 <span className="font-display text-[1.25rem] font-bold text-ink">
-                  {formatMoney(item.raised_amount, item.currency)}
+                  {formatMoney(raised, item.currency)}
                 </span>{' '}
-                raised of {formatMoney(item.goal_amount, item.currency)}
+                raised of {formatMoney(target, item.currency)}
               </p>
               {item.deadline && (
                 <p className="mt-1.5 text-[0.85rem] text-clay">Closes on {prettyDate(item.deadline)}</p>
               )}
               <Link to="/#support" className="btn-pink mt-6">
-                <span>Give to this appeal</span>
+                <span>{isFundraiser ? 'Give to this appeal' : 'Support this work'}</span>
                 <ArrowRight size={18} />
               </Link>
             </div>
@@ -137,10 +144,10 @@ export default function ItemDetail({ kind }) {
           </Stagger>
         )}
 
-        {item.body && (
+        {item.description && (
           <Reveal delay={0.08}>
             <div className="mt-12 max-w-2xl space-y-5 pb-20 text-[1.05rem] leading-[1.8] text-clay">
-              {item.body.split(/\n{2,}/).map((para, i) => (
+              {item.description.split(/\n{2,}/).map((para, i) => (
                 <p key={i}>{para}</p>
               ))}
             </div>

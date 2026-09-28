@@ -50,7 +50,9 @@ function FundraiserCard({ item }) {
             {item.status === 'closed' ? 'Closed' : 'Open appeal'}
           </span>
           <h3 className="mt-4 font-display text-[1.3rem] font-bold leading-snug text-ink">{item.title}</h3>
-          {item.summary && <p className="mt-2.5 text-[0.95rem] leading-relaxed text-clay">{item.summary}</p>}
+          {item.description && (
+            <p className="mt-2.5 line-clamp-3 text-[0.95rem] leading-relaxed text-clay">{item.description}</p>
+          )}
           <Progress raised={item.raised_amount} goal={item.goal_amount} currency={item.currency} />
           <span className="mt-6 inline-flex items-center gap-2 text-[0.9rem] font-semibold text-ink">
             Read the appeal
@@ -63,7 +65,7 @@ function FundraiserCard({ item }) {
 }
 
 function ProjectCard({ item }) {
-  const meta = [item.location, prettyDate(item.happened_on)].filter(Boolean).join(' · ')
+  const meta = [item.location, prettyDate(item.date_started)].filter(Boolean).join(' · ')
   return (
     <StaggerItem as="article" className="card card-hover group overflow-hidden">
       <Link to={`/projects/${item.slug}`} className="block">
@@ -85,7 +87,14 @@ function ProjectCard({ item }) {
             </p>
           )}
           <h3 className="mt-3 font-display text-[1.18rem] font-bold leading-snug text-ink">{item.title}</h3>
-          {item.summary && <p className="mt-2 text-[0.92rem] leading-relaxed text-clay">{item.summary}</p>}
+          {item.description && (
+            <p className="mt-2 line-clamp-3 text-[0.92rem] leading-relaxed text-clay">{item.description}</p>
+          )}
+          {Number(item.beneficiaries) > 0 && (
+            <p className="mt-3 text-[0.82rem] font-semibold text-ink">
+              {Number(item.beneficiaries).toLocaleString('en-UG')} people reached
+            </p>
+          )}
         </div>
       </Link>
     </StaggerItem>

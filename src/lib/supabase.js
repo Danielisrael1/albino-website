@@ -15,7 +15,7 @@ export async function fetchProjects() {
     .select('*')
     .eq('published', true)
     .order('sort_order', { ascending: false })
-    .order('happened_on', { ascending: false, nullsFirst: false })
+    .order('date_started', { ascending: false, nullsFirst: false })
   if (error) throw error
   return data
 }
